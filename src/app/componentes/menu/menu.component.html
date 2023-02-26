@@ -9,20 +9,20 @@
 					<a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true"><b>∙CARTA∙</b></a>
 				</li>
 				<li class="nav-item active elementoLista">
-					<a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true"><b>∙UBICACIONES∙</b></a>
+					<a class="nav-link" [routerLink]="'/verRestaurantes'" (click)="isMenuCollapsed = true"><b>∙UBICACIONES∙</b></a>
 				</li>
+				<li class="nav-item active elementoLista">
+					<a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true"><b>∙MENÚ∙</b></a>
+				</li>
+				<li><a class="navbar-brand" [routerLink]="'.'"><img src="../../../assets/logo.png" class="logo"></a></li>
+				
 				<li class="nav-item drop" ngbDropdown>
 					<a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button"> <b>∙RESERVAS</b></a>
-					<div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end bg-dangerCl">
+					<div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end bg-dangerCl position-initial">
 						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">RESERVAR</a>
 						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">MODIFICAR RESERVA</a>
 						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">ANULAR RESERVA</a>
 					</div>
-				</li>
-				
-				<li><a class="navbar-brand" [routerLink]="'.'"><img src="../../../assets/logo.png" class="logo"></a></li>
-				<li class="nav-item active elementoLista">
-					<a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true"><b>∙MENÚ DEL DÍA∙</b></a>
 				</li>
 			</ul>
 			<div class="container-input">
@@ -35,3 +35,5 @@
 		</div>
 	</div>
 </nav>
+<h1 class="titulo">TRADICIÓN Y EXPERIENCIA</h1>
+<h2 class="subtitulo">COCINA ESPAÑOLA DESDE 1956</h2>
