@@ -120,4 +120,8 @@
   .card:hover > .link:after {
     transform: translate(.2em, -.2em);
   }
+
+  .prueba{
+    color: white;
+  }
   

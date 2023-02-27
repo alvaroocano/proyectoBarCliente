@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Restaurante } from 'src/app/clases/Restaurante';
+import { GestionRestaurantesService } from 'src/app/servicios/gestion-restaurantes.service';
 
 @Component({
   selector: 'app-card-restaurante',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-restaurante.component.css']
 })
 export class CardRestauranteComponent {
+  restaurantes: Restaurante[]=[];
 
+  constructor(private gestionarRestaurantes:GestionRestaurantesService){}
+
+  ngOnInit(){
+    this.cargarRestaurantes();
+  }
+
+  async cargarRestaurantes(){
+    this.restaurantes=await this.gestionarRestaurantes.getRestaurantes();
+  }
 }

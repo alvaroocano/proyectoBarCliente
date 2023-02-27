@@ -8,12 +8,19 @@ import { Restaurante } from '../clases/Restaurante';
   providedIn: 'root'
 })
 export class GestionRestaurantesService {
-  private apiRestUrl = 'http://localhost:2525';  // en producción /heroes
+  private apiRestUrl = 'http://localhost:80/proyectoBar--Servidor/public/api';  
   private httpOptions = {
        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private http: HttpClient) { }
-
+  async getRestaurantes():Promise<Restaurante[]>{
+    try{
+      const data=await lastValueFrom(this.http.get<Restaurante[]>(this.apiRestUrl + "/restaurantes"));
+      return data
+    }catch{
+      return [];
+    }
+  }
   
 }

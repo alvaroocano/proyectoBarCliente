@@ -1,7 +1,13 @@
-<div class="card" style="--rating:90">
-    <div class="icon">🫠</div>
-    <div class="title">Easy Cheesy</div>
-    <p class="description">This cheesy, juicy ultimate comforting lunch or quick and easy dinner recipe.</p>
-    <div class="rating"></div>
-    <a href="#" class="link">See the recipe</a>
+<div *ngFor="let restaurante of restaurantes">
+    <div class="card" style="--rating:100">
+        <div class="icon">🫠</div>
+        <div class="title">{{restaurante.localidad}}</div>
+        <p class="description">This cheesy, juicy ultimate comforting lunch or quick and easy dinner recipe.</p>
+        <div class="rating"></div>
+        <a href="#" class="link">See the recipe</a>
+    </div>
 </div>
+
+
+
+
