@@ -18,6 +18,7 @@
     width: 120px;
     position: relative;
     right: 50px;
+    bottom: 10px;
 }
 
 .input-form {
@@ -37,7 +38,7 @@
     transition: all .2s ease-in-out;
     outline: none;
     opacity: 0.8;
-    margin-top: 5px;
+    
   }
   
   .container-input svg {
