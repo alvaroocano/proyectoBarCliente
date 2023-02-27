@@ -4,5 +4,6 @@ export interface Restaurante{
     horario: string;
     telefono: number;
     aforo: number;
+    imagen: string;
     inventarios: string;
 }

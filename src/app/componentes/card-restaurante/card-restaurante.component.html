@@ -1,13 +1,15 @@
-<div *ngFor="let restaurante of restaurantes">
-    <div class="card" style="--rating:100">
-        <div class="icon">🫠</div>
-        <div class="title">{{restaurante.localidad}}</div>
-        <p class="description">This cheesy, juicy ultimate comforting lunch or quick and easy dinner recipe.</p>
+<h1 class="titulo">UBICACIONES</h1>
+<div class="central">
+    <div class="card" style="--rating:100" *ngFor="let restaurante of restaurantes" >
+        <div class="contenedorImagenes"><img src="{{restaurante.imagen}}" class="imagen"></div>
+        <div class="localidad">{{restaurante.localidad}}</div>
+        <div class="horario">Horario: {{restaurante.horario}}</div>
+        <div class="aforo">Aforo: Max. {{restaurante.aforo}} personas</div>
+        <div class="tlf">Teléfono: {{restaurante.telefono}}</div>
         <div class="rating"></div>
-        <a href="#" class="link">See the recipe</a>
+        <a [routerLink]="'/altaReservas'" class="link">Reservar</a>
     </div>
 </div>
-
 
 
 

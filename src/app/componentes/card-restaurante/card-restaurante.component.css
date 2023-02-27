@@ -1,3 +1,18 @@
+.titulo{
+  color: white;
+  font-family: 'Fondamento', cursive;
+  margin-left: 500px;
+  position: relative;
+  top: 100px;
+}
+
+.central{
+  width: 600px;
+  margin: 0 auto;
+  position: relative;
+  right: 100px;
+}
+
 .card {
     --background: #fff;
     --cardShadow: rgba(32,33,37,.1);
@@ -25,7 +40,7 @@
   
   .card {
     width: 250px;
-    height: 350px;
+    height: 450px;
     aspect-ratio: 2/3;
     background: var(--background);
     color: var(--textColor);
@@ -35,6 +50,7 @@
     transition: box-shadow .5s, transform .5s;
     border-radius: 8px;
     display: inline-block;
+    margin: 0 auto;
   }
   
   .card:hover {
@@ -48,15 +64,14 @@
     box-shadow: 4px 4px 0 var(--cardShadowActive);
   }
   
-  .card > .icon,
-  .card > .title,
+  .card > .localidad,
   .card > .description {
     margin-bottom: 0.7em;
     cursor: default;
     user-select: none;
   }
   
-  .card > .title {
+  .card > .localidad {
     margin-top: 1.5em;
     font-weight: bold;
   }
@@ -66,9 +81,11 @@
     min-height: 6em;
   }
   
-  .card > .icon {
-    font-size: 3em;
-    margin-bottom: .2em;
+  .imagen {
+    width: 220px;
+    height: 180px;
+    position: relative;
+    right: 10px;
   }
   
   .card > .rating {
@@ -121,7 +138,25 @@
     transform: translate(.2em, -.2em);
   }
 
-  .prueba{
-    color: white;
+  div.card:nth-child(1){
+    position: relative;
+    top: 150px;
+  }
+
+  div.card:nth-child(2){
+    position: relative;
+    left: 200px;
+    top: 150px;
+  }
+
+  div.card:nth-child(3){
+    position: relative;
+    top: 200px;
+  }
+
+  div.card:nth-child(4){
+    position: relative;
+    left: 200px;
+    top: 200px;
   }
   
