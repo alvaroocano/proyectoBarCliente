@@ -8,8 +8,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent {
-  email="";
-  password="";
+  email:string="";
+  password:string="";
 
   constructor() {}
 

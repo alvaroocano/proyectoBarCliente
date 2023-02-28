@@ -1,6 +1,16 @@
 <h1 class="titulo">UBICACIONES</h1>
+<div class="form-group buscar">
+    <input type="text" class="form-control" name="filterPost" placeholder="Search..." [(ngModel)]="filterRestaurantes">
+</div>
+<div class="form-group select">
+    <select class="form-select" aria-label="Default select example" [(ngModel)]="order">
+    <option value="">Seleccione una opción</option>
+    <option value="localidad">Localidad</option>
+    <option value="aforo">Aforo</option>
+</select>
+</div>
 <div class="central">
-    <div class="card" style="--rating:100" *ngFor="let restaurante of restaurantes" >
+    <div class="card" style="--rating:100" *ngFor="let restaurante of restaurantes | orderBy : order | filter:filterRestaurantes">
         <div class="contenedorImagenes"><img src="{{restaurante.imagen}}" class="imagen"></div>
         <div class="localidad">{{restaurante.localidad}}</div>
         <div class="horario">Horario: {{restaurante.horario}}</div>
@@ -10,6 +20,3 @@
         <a [routerLink]="'/altaReservas'" class="link">Reservar</a>
     </div>
 </div>
-
-
-

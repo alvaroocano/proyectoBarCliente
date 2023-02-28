@@ -11,6 +11,7 @@
   margin: 0 auto;
   position: relative;
   right: 100px;
+  z-index: 1;
 }
 
 .card {
@@ -51,6 +52,7 @@
     border-radius: 8px;
     display: inline-block;
     margin: 0 auto;
+    
   }
   
   .card:hover {
@@ -158,5 +160,23 @@
     position: relative;
     left: 200px;
     top: 200px;
+  }
+
+  .buscar{
+    position: relative;
+    top: 100px;
+    margin: 0 auto;
+    right: 250px;
+    width: 200px;
+    z-index: 10;
+  }
+
+  .select{
+    position: relative;
+    top: 63px;
+    margin: 0 auto;
+    left: 150px;
+    width: 210px;
+    z-index: 10;
   }
   

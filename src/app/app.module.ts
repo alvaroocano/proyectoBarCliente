@@ -13,6 +13,9 @@ import { LoginComponent } from './componentes/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './componentes/register/register.component';
 import { FormReservaComponent } from './componentes/form-reserva/form-reserva.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { OrderByPipe } from './pipes/order-by-pipe.pipe';
+
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import { FormReservaComponent } from './componentes/form-reserva/form-reserva.co
     TitulosComponent,
     LoginComponent,
     RegisterComponent,
-    FormReservaComponent
+    FormReservaComponent,
+    FilterPipe,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Restaurante } from 'src/app/clases/Restaurante';
 import { GestionRestaurantesService } from 'src/app/servicios/gestion-restaurantes.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-card-restaurante',
@@ -19,4 +20,9 @@ export class CardRestauranteComponent {
   async cargarRestaurantes(){
     this.restaurantes=await this.gestionarRestaurantes.getRestaurantes();
   }
+
+  filterRestaurantes = '';
+
+  order = "";
+
 }

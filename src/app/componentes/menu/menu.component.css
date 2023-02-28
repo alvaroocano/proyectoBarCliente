@@ -65,6 +65,12 @@ a.dropdown-item{
 
 .login{
   position: relative;
-  left: 140px;
+  left: 80px;
+  font-size: 13px;
+}
+.register{
+  font-size: 13px;
+  position: relative;
+  left: 100px;
 }
 
