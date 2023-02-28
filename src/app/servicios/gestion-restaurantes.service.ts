@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders }   from '@angular/common/http';
 import { Observable,of, lastValueFrom }   from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Restaurante } from '../clases/Restaurante';
+import { Reserva } from '../clases/Reserva';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,16 @@ export class GestionRestaurantesService {
       return [];
     }
   }
+
+  async setReserva():Promise<Reserva[]>{
+    try{
+      const data=await lastValueFrom(this.http.get<Reserva[]>(this.apiRestUrl + "/reservas/new"));
+      return data
+    }catch{
+      return [];
+    }
+  }
+
+  
   
 }

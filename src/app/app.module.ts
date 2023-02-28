@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './componentes/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './componentes/register/register.component';
+import { FormReservaComponent } from './componentes/form-reserva/form-reserva.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { RegisterComponent } from './componentes/register/register.component';
     CardRestauranteComponent,
     TitulosComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FormReservaComponent
   ],
   imports: [
     BrowserModule,
