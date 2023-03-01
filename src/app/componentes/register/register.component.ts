@@ -27,14 +27,14 @@ export class RegisterComponent {
       const user:User={
         "id":"",
         "email":email,
-        "roles":JSON.parse("{}"),
+        "roles":JSON.parse('["ROLE_USER"]'),
         "nombre":nombre,
         "password":password,
         "reservas":""
 
       }
       const resultado=await this.usuarioServicio.registrar(user);
-      if(resultado.status=="Usuario Creado"){
+      if(resultado){
         alert("Operación realizada");
       }else{
         alert("No se ha podido realizar la operación");

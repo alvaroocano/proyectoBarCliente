@@ -14,6 +14,10 @@ export class UsersService {
 
   constructor(private http:HttpClient) { }
 
+  login(user: User): Observable<any> {
+    return this.http.post("https://reqres.in/api/login", user);
+  }
+
   async registrar(user:User):Promise<any>{
     try{
       const data= await lastValueFrom(this.http.post<any>(this.apiRestUrl+ "/user/new",user,this.httpOptions));
