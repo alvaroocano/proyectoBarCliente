@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
 import { data } from 'jquery';
+import { User } from 'src/app/clases/User';
 import { UsersService } from 'src/app/servicios/users.service';
 
 @Component({
@@ -8,22 +10,37 @@ import { UsersService } from 'src/app/servicios/users.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  email:string="";
-  password:string="";
-  nombre:string="";
   constructor(public usuarioServicio:UsersService) {}
 
-  register() {
-    console.log(this.email);
-    console.log(this.password);
-    console.log(this.nombre);
+    email:string="";
+    nombre=new FormControl('', [Validators.required, Validators.nullValidator]);;
+    password:string="";
+    async enviar(){
+      let email=this.email;
+      let nombre="";
+      if(!this.nombre.value?.trim()){
+        alert("El nombre debe estar relleno");
+      }else{
+        nombre=this.nombre.value?.trim();
+      }
+      let password=this.password;
+      const user:User={
+        "id":"",
+        "email":email,
+        "roles":JSON.parse("{}"),
+        "nombre":nombre,
+        "password":password,
+        "reservas":""
 
-    const user={
-      nombre:this.nombre,
-      password:this.password,
-      email:this.email
+      }
+      const resultado=await this.usuarioServicio.registrar(user);
+      if(resultado.status=="Usuario Creado"){
+        alert("Operación realizada");
+      }else{
+        alert("No se ha podido realizar la operación");
+        console.log(resultado.status);
+      }
+     
     }
-
-    this.usuarioServicio.register(user).subscribe((data)=>{console.log(data)});
   }
-}
+

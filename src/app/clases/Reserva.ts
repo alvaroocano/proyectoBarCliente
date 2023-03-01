@@ -1,5 +1,5 @@
 export interface Reserva{
-    id: number;
+    id: string;
     fecha: Date;
     hora: string;
     nro_personas: number;

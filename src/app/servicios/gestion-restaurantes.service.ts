@@ -24,12 +24,12 @@ export class GestionRestaurantesService {
     }
   }
 
-  async setReserva():Promise<Reserva[]>{
+  async setReserva(reserva:Reserva):Promise<any>{
     try{
-      const data=await lastValueFrom(this.http.get<Reserva[]>(this.apiRestUrl + "/reservas/new"));
-      return data
+      const data= await lastValueFrom(this.http.post<any>(this.apiRestUrl+"/reservas/new",reserva,this.httpOptions));
+      return data;
     }catch{
-      return [];
+      return {"status":"error"};
     }
   }
 

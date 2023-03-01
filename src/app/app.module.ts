@@ -15,7 +15,7 @@ import { RegisterComponent } from './componentes/register/register.component';
 import { FormReservaComponent } from './componentes/form-reserva/form-reserva.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { OrderByPipe } from './pipes/order-by-pipe.pipe';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -35,6 +35,7 @@ import { OrderByPipe } from './pipes/order-by-pipe.pipe';
     NgbModule,
     NgbdCollapseNavbar,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
