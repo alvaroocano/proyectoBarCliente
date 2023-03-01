@@ -15,6 +15,7 @@ export class GestionRestaurantesService {
   };
 
   constructor(private http: HttpClient) { }
+  
   async getRestaurantes():Promise<Restaurante[]>{
     try{
       const data=await lastValueFrom(this.http.get<Restaurante[]>(this.apiRestUrl + "/restaurantes"));
@@ -32,6 +33,17 @@ export class GestionRestaurantesService {
       return {"status":"error"};
     }
   }
+
+  async getReservas(id:String):Promise<Reserva[]>{
+    try{
+      const data=await lastValueFrom(this.http.get<Reserva[]>(this.apiRestUrl + "/reservas/" + id));
+      return data
+    }catch{
+      return [];
+    }
+  }
+
+  
 
   
   

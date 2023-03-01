@@ -5,11 +5,13 @@ import { FormReservaComponent } from './componentes/form-reserva/form-reserva.co
 import { LoginComponent } from './componentes/login/login.component';
 import { RegisterComponent } from './componentes/register/register.component';
 import { TitulosComponent } from './componentes/titulos/titulos.component';
+import { MisReservasComponent } from './componentes/mis-reservas/mis-reservas.component';
 
 const routes: Routes = [
   {path: '',component:TitulosComponent},
   {path: 'verRestaurantes',component:CardRestauranteComponent},
   {path: 'altaReservas',component:FormReservaComponent},
+  {path: 'misReservas',component:MisReservasComponent},
   { path: 'login', component:LoginComponent, pathMatch: "full" },
   { path: 'register', component:RegisterComponent, pathMatch: "full" }
 ];

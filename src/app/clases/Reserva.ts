@@ -1,6 +1,9 @@
+import { Restaurante } from "./Restaurante";
+import { User } from "./User";
+
 export interface Reserva{
     id: string;
-    fecha: Date;
+    fecha: string;
     hora: string;
     nro_personas: number;
     primero: string;
@@ -8,6 +11,6 @@ export interface Reserva{
     bebida: string;
     postre: string;
     total: number;
-    restaurantes: string;
-    user: string;
+    restaurantes: Restaurante;
+    user: User;
 }

@@ -16,6 +16,8 @@ import { FormReservaComponent } from './componentes/form-reserva/form-reserva.co
 import { FilterPipe } from './pipes/filter.pipe';
 import { OrderByPipe } from './pipes/order-by-pipe.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { MisReservasComponent } from './componentes/mis-reservas/mis-reservas.component';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     FormReservaComponent,
     FilterPipe,
-    OrderByPipe
+    OrderByPipe,
+    MisReservasComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     NgbdCollapseNavbar,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
