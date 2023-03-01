@@ -14,8 +14,8 @@ export class UsersService {
 
   constructor(private http:HttpClient) { }
 
-  login(user: User): Observable<any> {
-    return this.http.post("https://reqres.in/api/login", user);
+  login(user: any): Observable<any> {
+    return this.http.post(this.apiRestUrl+ "/user/login", user);
   }
 
   async registrar(user:User):Promise<any>{
