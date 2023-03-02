@@ -19,7 +19,7 @@ export class MisReservasComponent {
   }
 
   async cargarReservas(){
-    this.reservas = await this.gestionarReservas.getReservas("17");
+    this.reservas = await this.gestionarReservas.getReservas("1");
     this.reservas.forEach(element => {
       let fechaBien=element.fecha.split(" ")[0];
       element.fecha=fechaBien

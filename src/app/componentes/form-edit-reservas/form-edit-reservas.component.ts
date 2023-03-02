@@ -36,8 +36,9 @@ export class FormEditReservasComponent {
   async editarReserva(){
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if(id){
-      const reserva:Reserva=await this.reservaServicio.modReserva(id);
+      const reserva:Reserva=await this.reservaServicio.getReservas(id);
       if(reserva.id!=""){
+        
         this.nro_personas.setValue(reserva.nro_personas.toString());
         this.fecha.setValue(reserva.fecha.toString());
         this.hora.setValue(reserva.hora);
