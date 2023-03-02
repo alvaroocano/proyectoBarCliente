@@ -1,4 +1,4 @@
-<h1 class="titulo">MIS RESERVAS</h1>
+<h1 class="titulo">MODIFICAR RESERVAS</h1>
 <table class="table table-striped bg-light tabla">
 	<thead>
 		<tr>
@@ -13,6 +13,9 @@
 			<td>{{reserva.hora}}</td>
 			<td>{{reserva.nro_personas}}</td>
 			<td>12€</td>
+            <td><button type="button" (click)="editarReserva(reserva.id)">EDITAR</button></td>
 		</tr>
 	</tbody>
 </table>
+
+

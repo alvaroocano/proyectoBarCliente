@@ -36,10 +36,28 @@ export class GestionRestaurantesService {
 
   async getReservas(id:String):Promise<Reserva[]>{
     try{
-      const data=await lastValueFrom(this.http.get<Reserva[]>(this.apiRestUrl + "/reservas/" + id));
+      const data=await lastValueFrom(this.http.get<Reserva[]>(this.apiRestUrl + "/reservas/"+ id));
       return data
     }catch{
-      return [];
+      return[];
+    }
+  }
+
+  async deleteReserva(id:String):Promise<any>{
+    try{
+      const data= await lastValueFrom(this.http.delete<any>(this.apiRestUrl+"/reservas/delete/"+id));
+      return data;
+    }catch{
+      return {"status":"error"};
+    }
+  }
+
+  async modReserva(id:String):Promise<any>{
+    try{
+      const data= await lastValueFrom(this.http.get<any>(this.apiRestUrl+"/reservas/edit/"+id));
+      return data;
+    }catch{
+      return {"status":"error"};
     }
   }
 

@@ -11,6 +11,6 @@ export interface Reserva{
     bebida: string;
     postre: string;
     total: number;
-    restaurantes: Restaurante;
-    user: User;
+    restaurantes: string;
+    user: string;
 }

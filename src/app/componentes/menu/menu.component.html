@@ -20,8 +20,8 @@
 					<a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button"> <b>∙RESERVAS</b></a>
 					<div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end bg-dangerCl position-initial">
 						<a ngbDropdownItem [routerLink]="'/altaReservas'" (click)="$event.preventDefault()">RESERVAR</a>
-						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">MODIFICAR RESERVA</a>
-						<a ngbDropdownItem href="#" (click)="$event.preventDefault()">ANULAR RESERVA</a>
+						<a ngbDropdownItem [routerLink]="'/editarReservas'" (click)="$event.preventDefault()">MODIFICAR RESERVA</a>
+						<a ngbDropdownItem [routerLink]="'/anularReservas'" (click)="$event.preventDefault()">ANULAR RESERVA</a>
 						<a ngbDropdownItem [routerLink]="'/misReservas'" (click)="$event.preventDefault()">MIS RESERVAS</a>
 					</div>
 				</li>

@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Reserva } from 'src/app/clases/Reserva';
 import { GestionRestaurantesService } from 'src/app/servicios/gestion-restaurantes.service';
 
 @Component({
-  selector: 'app-mis-reservas',
-  templateUrl: './mis-reservas.component.html',
-  styleUrls: ['./mis-reservas.component.css']
+  selector: 'app-eliminar-reservas',
+  templateUrl: './eliminar-reservas.component.html',
+  styleUrls: ['./eliminar-reservas.component.css']
 })
-export class MisReservasComponent {
+export class EliminarReservasComponent {
   columnasMostradas: string[] = ['Fecha', 'Hora', 'Personas','Precio Por Persona'];
   columnasAMostrar: string[] = this.columnasMostradas.slice();
   reservas:Reserva[]=[];
@@ -19,11 +19,16 @@ export class MisReservasComponent {
   }
 
   async cargarReservas(){
-    this.reservas = await this.gestionarReservas.getReservas("17");
+    this.reservas = await this.gestionarReservas.getReservas("13");
     this.reservas.forEach(element => {
       let fechaBien=element.fecha.split(" ")[0];
       element.fecha=fechaBien
     });
   }
 
+  async borrarReserva($id:string){
+    this.reservas = await this.gestionarReservas.deleteReserva($id);
+    alert("Reserva anulada");
+    window.location.reload()
+  }
 }

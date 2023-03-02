@@ -86,7 +86,7 @@ export class FormReservaComponent{
     }
     const reserva:Reserva={
       "id":"",
-      "fecha":fecha,
+      "fecha":fecha+" 00:00:00",
       "primero":primero,
       "segundo":segundo,
       "bebida":bebida,
@@ -94,23 +94,8 @@ export class FormReservaComponent{
       "nro_personas":nro_personas,
       "hora":hora,
       "total":12.5,
-      "restaurantes":{
-        "id": 0,
-        "localidad": restaurante,
-        "horario": "",
-        "telefono": 0,
-        "aforo": 0,
-        "imagen": "",
-        "inventarios": ""
-    },
-      "user":{
-        "id":"",
-        "email":"alvaro@email.com",
-        "roles":JSON.parse('["ROLE_USER"]'),
-        "nombre":"",
-        "password":"",
-        "reservas":""
-      }
+      "restaurantes":"",
+      "user":""
     }
     const resultado=await this.reservaServicio.setReserva(reserva);
     if(resultado.status!="error"){
@@ -133,7 +118,6 @@ export class FormReservaComponent{
 
   async cargarRestaurantes(){
     this.restaurantes=await this.reservaServicio.getRestaurantes();
-  
   }
 
 

@@ -18,6 +18,9 @@ import { OrderByPipe } from './pipes/order-by-pipe.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MisReservasComponent } from './componentes/mis-reservas/mis-reservas.component';
+import { EliminarReservasComponent } from './componentes/eliminar-reservas/eliminar-reservas.component';
+import { EditarReservasComponent } from './componentes/editar-reservas/editar-reservas.component';
+import { FormEditReservasComponent } from './componentes/form-edit-reservas/form-edit-reservas.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { MisReservasComponent } from './componentes/mis-reservas/mis-reservas.co
     FormReservaComponent,
     FilterPipe,
     OrderByPipe,
-    MisReservasComponent
+    MisReservasComponent,
+    EliminarReservasComponent,
+    EditarReservasComponent,
+    FormEditReservasComponent
   ],
   imports: [
     BrowserModule,
