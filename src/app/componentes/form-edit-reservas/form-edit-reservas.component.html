@@ -1,47 +1,7 @@
 <div class="reserva">
     <form class="custom-form" method="post">
         <h1>Reservar</h1>
-        <input matInput placeholder="yyyy/mm/dd" [formControl]="fecha" required>
-        <input matInput placeholder="Elija el número de asistentes" [formControl]="nro_personas" required>
-        <select matInput [formControl]="hora" required >
-          <option value="" disabled selected>Seleccione una hora</option>
-          <option value="12:00">12:00</option>
-          <option value="13:00">13:00</option>
-          <option value="14:00">14:00</option>
-          <option value="15:00">15:00</option>
-          <option value="21:00">21:00</option>
-          <option value="22:00">22:00</option>
-        </select>
-        <select matInput [formControl]="restaurante" required>
-          <option value="" disabled selected>Seleccione el restaurante</option>
-            <option value={{restaurante}} *ngFor="let restaurante of restaurantes">{{restaurante.localidad}}</option>
-        </select>
-        <select matInput [formControl]="primero" required >
-          <option value="" disabled selected>Seleccione el primer plato</option>
-          <option value="sopa">Sopa Castellana</option>
-          <option value="callos">Callos a la madrileña</option>
-          <option value="cachopo">Cachopo Asturiano</option>
-        </select>
-        <select matInput [formControl]="segundo" required >
-          <option value="" disabled selected>Seleccione el segundo plato</option>
-          <option value="pollo">Pollo a la jardinera</option>
-          <option value="albondigas">Álbondigas con patatas</option>
-          <option value="butifarra">Butifarra de vic a la brasa</option>
-        </select>
-        <select matInput [formControl]="bebida" required >
-          <option value="" disabled selected>Seleccione la bebida</option>
-          <option value="agua">Agua</option>
-          <option value="vino">Vino</option>
-          <option value="cerveza">Cerveza</option>
-          <option value="refresco">Refresco</option>
-        </select>
-        <select matInput [formControl]="postre" required >
-          <option value="" disabled selected>Seleccione el postre</option>
-          <option value="arroz">Arroz con leche</option>
-          <option value="tartaQueso">Tarta de Queso</option>
-          <option value="tartAbuela">Tarta de la abuela</option>
-          <option value="fruta">Fruta</option>
-        </select>
+        <input matInput placeholder="Modifique el número de asistentes" [formControl]="nro_personas" required>
         <button type="submit" (click)="editarReserva()">Enviar</button>
     </form>
   </div>

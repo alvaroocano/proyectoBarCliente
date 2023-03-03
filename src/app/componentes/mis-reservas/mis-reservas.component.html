@@ -1,4 +1,14 @@
 <h1 class="titulo">MIS RESERVAS</h1>
+<div class="form-group buscar">
+    <input type="text" class="form-control" name="filterPost" placeholder="Search..." [(ngModel)]="filterReservas">
+</div>
+<div class="form-group select">
+    <select class="form-select" aria-label="Default select example" [(ngModel)]="order">
+    <option value="">Seleccione una opción</option>
+    <option value="fecha">Fecha</option>
+    <option value="nro_personas">Personas</option>
+</select>
+</div>
 <table class="table table-striped bg-light tabla">
 	<thead>
 		<tr>
@@ -8,7 +18,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let reserva of reservas">
+		<tr *ngFor="let reserva of reservas| orderReservasByPipe : order | filterReservas:filterReservas">
 			<td>{{reserva.fecha}}</td>
 			<td>{{reserva.hora}}</td>
 			<td>{{reserva.nro_personas}}</td>

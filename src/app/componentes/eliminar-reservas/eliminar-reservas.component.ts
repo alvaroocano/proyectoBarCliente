@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Reserva } from 'src/app/clases/Reserva';
 import { GestionRestaurantesService } from 'src/app/servicios/gestion-restaurantes.service';
+import { Router, RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-eliminar-reservas',
@@ -12,7 +13,7 @@ export class EliminarReservasComponent {
   columnasAMostrar: string[] = this.columnasMostradas.slice();
   reservas:Reserva[]=[];
 
-  constructor(private gestionarReservas:GestionRestaurantesService){}
+  constructor(private gestionarReservas:GestionRestaurantesService,private router: Router){}
 
   ngOnInit(){
     this.cargarReservas();
@@ -29,6 +30,6 @@ export class EliminarReservasComponent {
   async borrarReserva($id:string){
     this.reservas = await this.gestionarReservas.deleteReserva($id);
     alert("Reserva anulada");
-    window.location.reload()
+    this.router.navigate(['/misReservas']);
   }
 }

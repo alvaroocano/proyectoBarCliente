@@ -22,7 +22,8 @@ import { EliminarReservasComponent } from './componentes/eliminar-reservas/elimi
 import { EditarReservasComponent } from './componentes/editar-reservas/editar-reservas.component';
 import { FormEditReservasComponent } from './componentes/form-edit-reservas/form-edit-reservas.component';
 import { NgxPayPalModule } from 'ngx-paypal';
-import { PaypalComponent } from './componentes/paypal/paypal.component';
+import { FilterReservasPipe } from './pipes/filter-reservas.pipe';
+import { OrderReservasByPipePipe } from './pipes/order-reservas-by-pipe.pipe';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { PaypalComponent } from './componentes/paypal/paypal.component';
     EliminarReservasComponent,
     EditarReservasComponent,
     FormEditReservasComponent,
-    PaypalComponent
+    FilterReservasPipe,
+    OrderReservasByPipePipe
   ],
   imports: [
     BrowserModule,

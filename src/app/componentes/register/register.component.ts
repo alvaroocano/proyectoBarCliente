@@ -37,7 +37,7 @@ export class RegisterComponent {
       const resultado=await this.usuarioServicio.registrar(user);
       if(resultado){
         alert("Operación realizada");
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
       }else{
         alert("No se ha podido realizar la operación");
         console.log(resultado.status);

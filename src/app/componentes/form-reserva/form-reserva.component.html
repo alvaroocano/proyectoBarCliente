@@ -14,7 +14,7 @@
       </select>
       <select matInput [formControl]="restaurante" required>
         <option value="" disabled selected>Seleccione el restaurante</option>
-          <option value={{restaurante}} *ngFor="let restaurante of restaurantes">{{restaurante.localidad}}</option>
+          <option value={{restaurante.localidad.toString()}} *ngFor="let restaurante of restaurantes">{{restaurante.localidad}}</option>
       </select>
       <select matInput [formControl]="primero" required >
         <option value="" disabled selected>Seleccione el primer plato</option>
@@ -42,8 +42,15 @@
         <option value="tartAbuela">Tarta de la abuela</option>
         <option value="fruta">Fruta</option>
       </select>
-      <button (click)="reservar()">RESERVAR</button>
-      <!--<app-paypal></app-paypal>-->
+      <button *ngIf="!showPaypalButtons" 
+  (click)="pay()">Pagar con paypal</button>
+
+
+<ngx-paypal *ngIf="showPaypalButtons" 
+  [config]="payPalConfig">
+</ngx-paypal>
+<button  *ngIf="showPaypalButtons" (click)="back()">Volver atras</button>
+      
   </form>
 </div>
 

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { GestionRestaurantesService } from 'src/app/servicios/gestion-restaurantes.service';
+import { ICreateOrderRequest } from "ngx-paypal";
 import {FormControl, Validators} from '@angular/forms';
 import { Reserva } from 'src/app/clases/Reserva';
 import { Restaurante } from 'src/app/clases/Restaurante';
-import { PaypalComponent } from '../paypal/paypal.component';
+import { Router, RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-form-reserva',
@@ -12,8 +13,11 @@ import { PaypalComponent } from '../paypal/paypal.component';
 })
 export class FormReservaComponent{
   restaurantes: Restaurante[]=[];
+  public payPalConfig: any;
+  public showPaypalButtons: boolean | undefined;
+
   
-  constructor(public reservaServicio:GestionRestaurantesService) {}
+  constructor(public reservaServicio:GestionRestaurantesService, private router: Router) {}
   nro_personas=new FormControl('', [Validators.required, Validators.nullValidator]);
   fecha=new FormControl('', [Validators.required, Validators.nullValidator]);
   hora=new FormControl('', [Validators.required, Validators.nullValidator]);
@@ -23,9 +27,87 @@ export class FormReservaComponent{
   bebida=new FormControl('', [Validators.required, Validators.nullValidator]);
   postre=new FormControl('', [Validators.required, Validators.nullValidator]);
   total=new FormControl('', [Validators.required, Validators.nullValidator]);
+  
+  ngOnInit() {
+    this.payPalConfig = {
+      currency: "EUR",
+      clientId: "AYvU7p49APJ3TWCP7EPq6Z1Sm7LijDirPdDI-G6DjNasJ2tyIVCwb0IZL1v5cKy_tw7qPr_2ybS62gCR",
+      createOrder: () =>
+        <ICreateOrderRequest>{
+          intent: "CAPTURE",
+          purchase_units: [
+            {
+              amount: {
+                currency_code: "EUR",
+                value: "9.99",
+                breakdown: {
+                  item_total: {
+                    currency_code: "EUR",
+                    value: "9.99"
+                  }
+                }
+              },
+              items: [
+                {
+                  name: "Enterprise Subscription",
+                  quantity: "1",
+                  category: "DIGITAL_GOODS",
+                  unit_amount: {
+                    currency_code: "EUR",
+                    value: "9.99"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+      advanced: {
+        commit: "true"
+      },
+      style: {
+        label: "paypal",
+        layout: "vertical"
+      },
+      onApprove: (data: any, actions: { order: { get: () => Promise<any>; }; }) => {
+        console.log(
+          "onApprove - transaction was approved, but not authorized",
+          data,
+          actions
+        );
+        actions.order.get().then(details => {
+          console.log(
+            "onApprove - you can get full order details inside onApprove: ",
+            details
+          );
+        });
+      },
+      onClientAuthorization: (data: any) => {
+        this.reservar();
+        console.log(
+          "onClientAuthorization - you should probably inform your server about completed transaction at this point",
+          data
+        );
+      },
+      onCancel: (data: any, actions: any) => {
+        console.log("OnCancel", data, actions);
+      },
+      onError: (err: any) => {
+        console.log("OnError", err);
+      },
+      onClick: (data: any, actions: any) => {
+        console.log("onClick", data, actions);
+      }
+    };
 
-  ngOnInit(){
     this.cargarRestaurantes();
+  }
+
+  pay() {
+    this.showPaypalButtons = true;
+  }
+
+  back(){
+    this.showPaypalButtons = false;
   }
 
   async reservar(){
@@ -95,14 +177,16 @@ export class FormReservaComponent{
       "hora":hora,
       "total":12.5,
       "restaurantes":restaurante,
-      "user":"13"
+      "user":"1"
     }
-    const resultado=await this.reservaServicio.setReserva(reserva);
+    const resultado=await this.reservaServicio.setReserva(reserva, "1", restaurante);
     if(resultado.status!="error"){
       alert("Operación realizada");
+      this.router.navigate(['/misReservas']);
     }else{
       alert("No se ha podido realizar la operación");
       console.log(resultado.status);
+      console.log(restaurante);
     }
    
   }

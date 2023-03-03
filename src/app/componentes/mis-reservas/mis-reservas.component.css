@@ -7,6 +7,26 @@
   }
 
   .table{
+    width: 100%;
     position: relative;
     top: 70px;
+  }
+
+  .buscar{
+    position: relative;
+    top: 63px;
+    margin: 0 auto;
+    right: 250px;
+    width: 200px;
+    z-index: 10;
+    height: 20px;
+  }
+
+  .select{
+    position: relative;
+    top: 43px;
+    margin: 0 auto;
+    left: 150px;
+    width: 210px;
+    z-index: 10;
   }

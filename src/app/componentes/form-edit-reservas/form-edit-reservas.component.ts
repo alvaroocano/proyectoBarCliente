@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Reserva } from 'src/app/clases/Reserva';
 import { Location } from '@angular/common';
 import { Restaurante } from 'src/app/clases/Restaurante';
+import { Router, RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-form-edit-reservas',
@@ -13,17 +14,11 @@ import { Restaurante } from 'src/app/clases/Restaurante';
 })
 export class FormEditReservasComponent {
   restaurantes: Restaurante[]=[];
+  reservas:Reserva[]=[];
 
   nro_personas=new FormControl('', [Validators.required, Validators.nullValidator]);
-  fecha=new FormControl('', [Validators.required, Validators.nullValidator]);
-  hora=new FormControl('', [Validators.required, Validators.nullValidator]);
-  restaurante=new FormControl('', [Validators.required, Validators.nullValidator]);
-  primero=new FormControl('', [Validators.required, Validators.nullValidator]);
-  segundo=new FormControl('', [Validators.required, Validators.nullValidator]);
-  bebida=new FormControl('', [Validators.required, Validators.nullValidator]);
-  postre=new FormControl('', [Validators.required, Validators.nullValidator]);
   
-  constructor(public reservaServicio:GestionRestaurantesService,private activatedRoute:ActivatedRoute,private location:Location) {}
+  constructor(public reservaServicio:GestionRestaurantesService,private router: Router,private activatedRoute:ActivatedRoute,private location:Location) {}
 
   ngOnInit(){
     this.cargarRestaurantes();
@@ -34,23 +29,21 @@ export class FormEditReservasComponent {
   }
 
   async editarReserva(){
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if(id){
-      const reserva:Reserva=await this.reservaServicio.modReserva(id);
-      if(reserva.id!=""){
-        
-        this.nro_personas.setValue(reserva.nro_personas.toString());
-        this.fecha.setValue(reserva.fecha.toString());
-        this.hora.setValue(reserva.hora);
-        this.restaurante.setValue(reserva.restaurantes);
-        this.primero.setValue(reserva.primero);
-        this.segundo.setValue(reserva.segundo);
-        this.segundo.setValue(reserva.bebida);
-        this.segundo.setValue(reserva.postre);
-      }else{
-        alert("No existe esa flor");
-        this.location.back();
-      }
+    let nro_personas=0;
+    if(!this.nro_personas.value?.trim()){
+      alert("El número de personas debe estar relleno");
+    }else{
+      nro_personas=Number(this.nro_personas.value?.trim());
     }
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    const resultado=await this.reservaServicio.modReserva(id,nro_personas);
+    if(resultado.status!='error'){
+      alert("Reserva modificada");
+      this.router.navigate(['/misReservas']);
+    }else{
+      alert("No se ha podido modificar");
+    }
+
   }
+    
 }

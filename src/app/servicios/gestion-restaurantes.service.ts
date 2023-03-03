@@ -25,9 +25,9 @@ export class GestionRestaurantesService {
     }
   }
 
-  async setReserva(reserva:Reserva):Promise<any>{
+  async setReserva(reserva:Reserva, id:String, localidad:String):Promise<any>{
     try{
-      const data= await lastValueFrom(this.http.post<any>(this.apiRestUrl+"/reservas/new",reserva,this.httpOptions));
+      const data= await lastValueFrom(this.http.post<any>(this.apiRestUrl+"/reservas/new/"+ id + "/"+localidad,reserva,this.httpOptions));
       return data;
     }catch{
       return {"status":"error"};
@@ -52,9 +52,9 @@ export class GestionRestaurantesService {
     }
   }
 
-  async modReserva(id:String):Promise<any>{
+  async modReserva(id:string|null,nro_personas:Number):Promise<any>{
     try{
-      const data= await lastValueFrom(this.http.get<any>(this.apiRestUrl+"/reservas/edit/"+id));
+      const data= await lastValueFrom(this.http.put<any>(this.apiRestUrl+"/reservas/edit/"+id,nro_personas));
       return data;
     }catch{
       return {"status":"error"};
