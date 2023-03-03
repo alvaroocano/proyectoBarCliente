@@ -94,8 +94,8 @@ export class FormReservaComponent{
       "nro_personas":nro_personas,
       "hora":hora,
       "total":12.5,
-      "restaurantes":"",
-      "user":""
+      "restaurantes":restaurante,
+      "user":"13"
     }
     const resultado=await this.reservaServicio.setReserva(reserva);
     if(resultado.status!="error"){
@@ -103,15 +103,6 @@ export class FormReservaComponent{
     }else{
       alert("No se ha podido realizar la operación");
       console.log(resultado.status);
-
-      console.log(nro_personas);
-      console.log(fecha);
-      console.log(primero);
-      console.log(segundo);
-      console.log(bebida);
-      console.log(postre);
-      console.log(hora);
-      console.log(restaurante);
     }
    
   }
