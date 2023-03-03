@@ -52,9 +52,9 @@ export class GestionRestaurantesService {
     }
   }
 
-  async modReserva(id:String, reserva:Reserva):Promise<any>{
+  async modReserva(id:String):Promise<any>{
     try{
-      const data= await lastValueFrom(this.http.put<any>(this.apiRestUrl+"/reservas/edit/"+id,reserva,this.httpOptions));
+      const data= await lastValueFrom(this.http.get<any>(this.apiRestUrl+"/reservas/edit/"+id));
       return data;
     }catch{
       return {"status":"error"};

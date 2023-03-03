@@ -3,7 +3,7 @@ import { GestionRestaurantesService } from 'src/app/servicios/gestion-restaurant
 import {FormControl, Validators} from '@angular/forms';
 import { Reserva } from 'src/app/clases/Reserva';
 import { Restaurante } from 'src/app/clases/Restaurante';
-
+import { PaypalComponent } from '../paypal/paypal.component';
 
 @Component({
   selector: 'app-form-reserva',

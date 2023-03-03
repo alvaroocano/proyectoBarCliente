@@ -21,6 +21,8 @@ import { MisReservasComponent } from './componentes/mis-reservas/mis-reservas.co
 import { EliminarReservasComponent } from './componentes/eliminar-reservas/eliminar-reservas.component';
 import { EditarReservasComponent } from './componentes/editar-reservas/editar-reservas.component';
 import { FormEditReservasComponent } from './componentes/form-edit-reservas/form-edit-reservas.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { PaypalComponent } from './componentes/paypal/paypal.component';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { FormEditReservasComponent } from './componentes/form-edit-reservas/form
     MisReservasComponent,
     EliminarReservasComponent,
     EditarReservasComponent,
-    FormEditReservasComponent
+    FormEditReservasComponent,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { FormEditReservasComponent } from './componentes/form-edit-reservas/form
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
+    NgxPayPalModule,
     HttpClientModule
   ],
   providers: [],

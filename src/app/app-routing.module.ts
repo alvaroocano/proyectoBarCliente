@@ -9,6 +9,7 @@ import { MisReservasComponent } from './componentes/mis-reservas/mis-reservas.co
 import { EliminarReservasComponent } from './componentes/eliminar-reservas/eliminar-reservas.component';
 import { EditarReservasComponent } from './componentes/editar-reservas/editar-reservas.component';
 import { FormEditReservasComponent } from './componentes/form-edit-reservas/form-edit-reservas.component';
+import { PaypalComponent } from './componentes/paypal/paypal.component';
 
 const routes: Routes = [
   {path: '',component:TitulosComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'misReservas',component:MisReservasComponent},
   {path: 'anularReservas',component:EliminarReservasComponent},
   {path: 'editarReservas',component:EditarReservasComponent},
+  {path: 'paypalPago',component:PaypalComponent},
   {path: 'edit/:id',component:FormEditReservasComponent},
   { path: 'login', component:LoginComponent, pathMatch: "full" },
   { path: 'register', component:RegisterComponent, pathMatch: "full" }
