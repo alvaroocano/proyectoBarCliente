@@ -11,15 +11,27 @@ import { EditarReservasComponent } from './componentes/editar-reservas/editar-re
 import { FormEditReservasComponent } from './componentes/form-edit-reservas/form-edit-reservas.component';
 
 const routes: Routes = [
-  {path: '',component:TitulosComponent},
-  {path: 'verRestaurantes',component:CardRestauranteComponent},
-  {path: 'altaReservas',component:FormReservaComponent},
-  {path: 'misReservas',component:MisReservasComponent},
-  {path: 'anularReservas',component:EliminarReservasComponent},
-  {path: 'editarReservas',component:EditarReservasComponent},
+  {path: '',component:TitulosComponent, data:{
+    titulo:'HOME'
+  }},
+  {path: 'verRestaurantes',component:CardRestauranteComponent, data:{
+    titulo:'UBICACIONES'
+  }},
+  {path: 'altaReservas',component:FormReservaComponent, data: { titulo: 'RESERVAS / RESEVAR' },},
+  {path: 'misReservas',component:MisReservasComponent, data:{
+    titulo:'RESERVAS / MIS RESERVAS'
+  }},
+  {path: 'anularReservas',component:EliminarReservasComponent, data:{
+    titulo:'RESERVAS / ANULAR RESERVA'
+  }},
+  {path: 'editarReservas',component:EditarReservasComponent, data:{
+    titulo:'RESERVAS / EDITAR RESERVAS'
+  }},
   {path: 'edit/:id',component:FormEditReservasComponent},
   { path: 'login', component:LoginComponent, pathMatch: "full" },
-  { path: 'register', component:RegisterComponent, pathMatch: "full" }
+  { path: 'register', component:RegisterComponent, pathMatch: "full" , data:{
+    titulo:'REGISTRO'
+  }},
 ];
 
 @NgModule({

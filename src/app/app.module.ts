@@ -24,6 +24,11 @@ import { FormEditReservasComponent } from './componentes/form-edit-reservas/form
 import { NgxPayPalModule } from 'ngx-paypal';
 import { FilterReservasPipe } from './pipes/filter-reservas.pipe';
 import { OrderReservasByPipePipe } from './pipes/order-reservas-by-pipe.pipe';
+import { CarruselComponent } from './componentes/carrusel/carrusel.component';
+import { BreadcrumbModule } from "xng-breadcrumb";
+import { BreadcrumbService } from 'xng-breadcrumb';
+import { BreadcrumbsComponent } from './componentes/breadcrumbs/breadcrumbs.component';
+
 
 
 @NgModule({
@@ -41,7 +46,9 @@ import { OrderReservasByPipePipe } from './pipes/order-reservas-by-pipe.pipe';
     EditarReservasComponent,
     FormEditReservasComponent,
     FilterReservasPipe,
-    OrderReservasByPipePipe
+    OrderReservasByPipePipe,
+    CarruselComponent,
+    BreadcrumbsComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,9 +59,10 @@ import { OrderReservasByPipePipe } from './pipes/order-reservas-by-pipe.pipe';
     CommonModule,
     ReactiveFormsModule,
     NgxPayPalModule,
+    BreadcrumbModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [BreadcrumbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

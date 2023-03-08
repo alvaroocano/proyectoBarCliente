@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { GestionRestaurantesService } from 'src/app/servicios/gestion-restaurantes.service';
 import { ICreateOrderRequest } from "ngx-paypal";
-import {FormControl, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Reserva } from 'src/app/clases/Reserva';
 import { Restaurante } from 'src/app/clases/Restaurante';
 import { Router, RouterModule, Routes } from '@angular/router';
@@ -15,11 +15,13 @@ export class FormReservaComponent{
   restaurantes: Restaurante[]=[];
   public payPalConfig: any;
   public showPaypalButtons: boolean | undefined;
+  form!: FormGroup;
 
   
   constructor(public reservaServicio:GestionRestaurantesService, private router: Router) {}
+  patronFecha = "/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/"; 
   nro_personas=new FormControl('', [Validators.required, Validators.nullValidator]);
-  fecha=new FormControl('', [Validators.required, Validators.nullValidator]);
+  fecha=new FormControl('', [Validators.required, Validators.nullValidator,Validators.pattern(this.patronFecha)]);
   hora=new FormControl('', [Validators.required, Validators.nullValidator]);
   restaurante=new FormControl('', [Validators.required, Validators.nullValidator]);
   primero=new FormControl('', [Validators.required, Validators.nullValidator]);
@@ -82,7 +84,6 @@ export class FormReservaComponent{
         });
       },
       onClientAuthorization: (data: any) => {
-        this.reservar();
         console.log(
           "onClientAuthorization - you should probably inform your server about completed transaction at this point",
           data
@@ -102,31 +103,28 @@ export class FormReservaComponent{
     this.cargarRestaurantes();
   }
 
-  pay() {
-    this.showPaypalButtons = true;
-  }
-
-  back(){
-    this.showPaypalButtons = false;
-  }
-
-  async reservar(){
+  async pay() {
+    let error=false;
     let nro_personas=0;
-    if(!this.nro_personas.value?.trim()){
+    if(!this.nro_personas.value?.trim() ||!Number(this.nro_personas.value?.trim())){
+      error=true;
       alert("El número de personas debe estar relleno");
+      
     }else{
       nro_personas=Number(this.nro_personas.value?.trim());
     }
 
     let fecha="";
     if(!this.fecha.value?.trim()){
-      alert("La fecha debe estar rellena");
+      error=true;
+      alert("La fecha debe estar rellena o el formato no es válido");
     }else{
       fecha=this.fecha.value?.trim();
     }
 
     let primero="";
     if(!this.primero.value?.trim()){
+      error=true;
       alert("El primero debe estar relleno");
     }else{
       primero=this.primero.value?.trim();
@@ -134,6 +132,7 @@ export class FormReservaComponent{
 
     let segundo="";
     if(!this.segundo.value?.trim()){
+      error=true;
       alert("El segundo debe estar relleno");
     }else{
       segundo=this.segundo.value?.trim();
@@ -141,6 +140,7 @@ export class FormReservaComponent{
 
     let bebida="";
     if(!this.bebida.value?.trim()){
+      error=true;
       alert("La bebida debe estar rellena");
     }else{
       bebida=this.bebida.value?.trim();
@@ -148,6 +148,7 @@ export class FormReservaComponent{
 
     let postre="";
     if(!this.postre.value?.trim()){
+      error=true;
       alert("El postre debe estar relleno");
     }else{
       postre=this.postre.value?.trim();
@@ -155,6 +156,7 @@ export class FormReservaComponent{
 
     let restaurante="";
     if(!this.restaurante.value?.trim()){
+      error=true;
       alert("El restaurante debe estar relleno");
     }else{
       restaurante=this.restaurante.value?.trim();
@@ -162,6 +164,7 @@ export class FormReservaComponent{
 
     let hora="";
     if(!this.hora.value?.trim()){
+      error=true;
       alert("La hora debe estar rellena");
     }else{
       hora=this.hora.value?.trim();
@@ -179,16 +182,24 @@ export class FormReservaComponent{
       "restaurantes":restaurante,
       "user":"1"
     }
-    const resultado=await this.reservaServicio.setReserva(reserva, "1", restaurante);
-    if(resultado.status!="error"){
-      alert("Operación realizada");
-      this.router.navigate(['/misReservas']);
-    }else{
-      alert("No se ha podido realizar la operación");
-      console.log(resultado.status);
-      console.log(restaurante);
+
+    if(!error){
+      this.showPaypalButtons = true;
+      const resultado=await this.reservaServicio.setReserva(reserva, "1", restaurante);
+      if(resultado.status!="error"){
+        alert("Operación realizada");
+        this.router.navigate(['/misReservas']);
+      }else{
+        alert("No se ha podido realizar la operación");
+        console.log(resultado.status);
+        console.log(restaurante);
+      }
     }
-   
+    
+  }
+
+  back(){
+    this.showPaypalButtons = false;
   }
 
   async cargarRestaurantes(){
