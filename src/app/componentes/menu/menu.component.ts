@@ -4,13 +4,13 @@ import { RouterLink } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { filter, map, Subscription } from 'rxjs';
 import { ActivationEnd, Router } from '@angular/router';
-import { NgIf } from '@angular/common';
+
 
 
 @Component({
 	selector: 'app-menu',
 	standalone: true,
-	imports: [NgbCollapseModule, RouterLink, NgbDropdownModule, NgIf],
+	imports: [NgbCollapseModule, RouterLink, NgbDropdownModule],
 	schemas:[NO_ERRORS_SCHEMA],
 	templateUrl: './menu.component.html',
 	styleUrls: ['./menu.component.css'],
@@ -26,7 +26,7 @@ export class NgbdCollapseNavbar {
 	isMenuCollapsed = true;
 	collapsed = true;
 
-	public titulo?:string;
+  public titulo?:string;
   public tituloSubs$?:Subscription;
 
   constructor(private router:Router) {

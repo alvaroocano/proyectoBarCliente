@@ -117,7 +117,7 @@ export class FormReservaComponent{
     let fecha="";
     if(!this.fecha.value?.trim()){
       error=true;
-      alert("La fecha debe estar rellena o el formato no es válido");
+      alert("La fecha debe estar rellena");
     }else{
       fecha=this.fecha.value?.trim();
     }
