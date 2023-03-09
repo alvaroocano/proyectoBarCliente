@@ -9,6 +9,7 @@ import { MisReservasComponent } from './componentes/mis-reservas/mis-reservas.co
 import { EliminarReservasComponent } from './componentes/eliminar-reservas/eliminar-reservas.component';
 import { EditarReservasComponent } from './componentes/editar-reservas/editar-reservas.component';
 import { FormEditReservasComponent } from './componentes/form-edit-reservas/form-edit-reservas.component';
+import { CarruselComponent } from './componentes/carrusel/carrusel.component';
 
 const routes: Routes = [
   {path: '',component:TitulosComponent, data:{

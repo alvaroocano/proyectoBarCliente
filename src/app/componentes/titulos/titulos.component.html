@@ -1,2 +1,22 @@
 <h1 class="titulo">TRADICIÓN Y EXPERIENCIA</h1>
 <h2 class="subtitulo">COCINA ESPAÑOLA DESDE 1956</h2>
+<div class="cuadro">
+<ngb-carousel *ngIf="images" class="carrusel">
+	<ng-template ngbSlide>
+		<div class="picsum-img-wrapper">
+			<img src="../../../assets/comida1.webp" alt="Random first slide" />
+		</div>
+	</ng-template>
+	<ng-template ngbSlide>
+		<div class="picsum-img-wrapper">
+			<img src="../../../assets/comida2.webp" alt="Random second slide" />
+		</div>
+	</ng-template>
+	<ng-template ngbSlide>
+		<div class="picsum-img-wrapper">
+			<img src="../../../assets/comida3.webp" alt="Random third slide" />
+		</div>
+	</ng-template>
+</ngb-carousel>
+<p class="texto">En nuestro restaurante podrá encontrar todo tipo de platos tradiconales y de cocina moderna con una amplia carta adaptada a todo tipo de gustos, acompañado de un servicio cercano al cliente.</p>
+</div>

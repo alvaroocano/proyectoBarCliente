@@ -27,6 +27,7 @@ import { OrderReservasByPipePipe } from './pipes/order-reservas-by-pipe.pipe';
 import { CarruselComponent } from './componentes/carrusel/carrusel.component';
 import { BreadcrumbModule } from "xng-breadcrumb";
 import { BreadcrumbService } from 'xng-breadcrumb';
+import { FooterComponent } from './componentes/footer/footer.component';
 
 
 
@@ -46,7 +47,8 @@ import { BreadcrumbService } from 'xng-breadcrumb';
     FormEditReservasComponent,
     FilterReservasPipe,
     OrderReservasByPipePipe,
-    CarruselComponent
+    CarruselComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
