@@ -1,7 +1,7 @@
 <div class="reserva">
   <form class="custom-form" method="post">
       <h1>Reservar</h1>
-      <input matInput placeholder="yyyy/mm/dd" [formControl]="fecha" required [pattern]="patronFecha">
+      <input matInput placeholder="yyyy/mm/dd" [formControl]="fecha" required>
       <input matInput placeholder="Elija el número de asistentes" [formControl]="nro_personas" required>
       <select matInput [formControl]="hora" required >
         <option value="" disabled selected>Seleccione una hora</option>

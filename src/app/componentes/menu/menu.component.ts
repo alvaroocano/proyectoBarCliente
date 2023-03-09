@@ -11,7 +11,6 @@ import { ActivationEnd, Router } from '@angular/router';
 	selector: 'app-menu',
 	standalone: true,
 	imports: [NgbCollapseModule, RouterLink, NgbDropdownModule],
-	schemas:[NO_ERRORS_SCHEMA],
 	templateUrl: './menu.component.html',
 	styleUrls: ['./menu.component.css'],
 	

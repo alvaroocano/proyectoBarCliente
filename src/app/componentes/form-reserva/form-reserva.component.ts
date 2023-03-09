@@ -15,13 +15,11 @@ export class FormReservaComponent{
   restaurantes: Restaurante[]=[];
   public payPalConfig: any;
   public showPaypalButtons: boolean | undefined;
-  form!: FormGroup;
 
   
-  constructor(public reservaServicio:GestionRestaurantesService, private router: Router) {}
-  patronFecha = "/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/"; 
+  constructor(public reservaServicio:GestionRestaurantesService) {}
   nro_personas=new FormControl('', [Validators.required, Validators.nullValidator]);
-  fecha=new FormControl('', [Validators.required, Validators.nullValidator,Validators.pattern(this.patronFecha)]);
+  fecha=new FormControl('', [Validators.required, Validators.nullValidator]);
   hora=new FormControl('', [Validators.required, Validators.nullValidator]);
   restaurante=new FormControl('', [Validators.required, Validators.nullValidator]);
   primero=new FormControl('', [Validators.required, Validators.nullValidator]);
@@ -188,7 +186,6 @@ export class FormReservaComponent{
       const resultado=await this.reservaServicio.setReserva(reserva, "1", restaurante);
       if(resultado.status!="error"){
         alert("Operación realizada");
-        this.router.navigate(['/misReservas']);
       }else{
         alert("No se ha podido realizar la operación");
         console.log(resultado.status);
