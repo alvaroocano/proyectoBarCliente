@@ -1,0 +1,25 @@
+div{
+    margin-bottom: 200px;
+    position: relative;
+    top: 60px;
+    left: 500px;
+    background-color: lightgray;
+    width: 200px;
+    border-radius: 10px;
+}
+
+li{
+    color: black;
+}
+
+a{
+    color: blue;
+}
+
+.titulo{
+    color: white;
+    font-family: 'Fondamento', cursive;
+    margin-left: 500px;
+    position: relative;
+    top: 50px;
+  }

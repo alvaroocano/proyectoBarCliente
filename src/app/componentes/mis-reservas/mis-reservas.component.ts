@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Reserva } from 'src/app/clases/Reserva';
 import { GestionRestaurantesService } from 'src/app/servicios/gestion-restaurantes.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-mis-reservas',
@@ -12,7 +13,7 @@ export class MisReservasComponent {
   columnasAMostrar: string[] = this.columnasMostradas.slice();
   reservas:Reserva[]=[];
 
-  constructor(private gestionarReservas:GestionRestaurantesService){}
+  constructor(private gestionarReservas:GestionRestaurantesService, private route: ActivatedRoute){}
 
   ngOnInit(){
     this.cargarReservas();

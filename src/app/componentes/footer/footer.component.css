@@ -6,6 +6,7 @@
     position: relative;
     bottom: 0;
     left: 0;
+    margin-top: 50px;
   }
   
   .footer-clean h3 {
@@ -102,4 +103,5 @@
     position: relative;
     right: 370px;
     top: 100px;
+    height: 20px;
   }

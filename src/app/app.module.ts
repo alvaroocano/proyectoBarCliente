@@ -28,6 +28,8 @@ import { CarruselComponent } from './componentes/carrusel/carrusel.component';
 import { BreadcrumbModule } from "xng-breadcrumb";
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { MapawebComponent } from './componentes/mapaweb/mapaweb.component';
+import { ReservasComponent } from './componentes/reservas/reservas.component';
 
 
 
@@ -48,7 +50,9 @@ import { FooterComponent } from './componentes/footer/footer.component';
     FilterReservasPipe,
     OrderReservasByPipePipe,
     CarruselComponent,
-    FooterComponent
+    FooterComponent,
+    MapawebComponent,
+    ReservasComponent
   ],
   imports: [
     BrowserModule,

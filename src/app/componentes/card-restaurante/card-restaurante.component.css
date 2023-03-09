@@ -7,10 +7,11 @@
 }
 
 .central{
-  width: 600px;
+  width: 1400px;
   margin: 0 auto;
   position: relative;
   right: 100px;
+  left: 15px;
   z-index: 1;
 }
 
@@ -24,6 +25,18 @@
     --textColor: #202125;
     --linkColor: #1967d2;
     --ratingColor: #faab00;
+    width: 250px;
+    height: 450px;
+    aspect-ratio: 2/3;
+    background: var(--background);
+    color: var(--textColor);
+    border: 1px solid var(--cardBorder);
+    padding: 25px;
+    box-shadow: 8px 8px 0 var(--cardShadow);
+    transition: box-shadow .5s, transform .5s;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 0 auto;
   }
   
   @media (prefers-color-scheme: dark) {
@@ -39,21 +52,6 @@
     }
   }
   
-  .card {
-    width: 250px;
-    height: 450px;
-    aspect-ratio: 2/3;
-    background: var(--background);
-    color: var(--textColor);
-    border: 1px solid var(--cardBorder);
-    padding: 25px;
-    box-shadow: 8px 8px 0 var(--cardShadow);
-    transition: box-shadow .5s, transform .5s;
-    border-radius: 8px;
-    display: inline-block;
-    margin: 0 auto;
-    
-  }
   
   .card:hover {
     transform: translate(-2px, -4px);
@@ -141,25 +139,20 @@
   }
 
   div.card:nth-child(1){
-    position: relative;
-    top: 150px;
+    margin-top: 100px;
+    margin-left: 50px;
   }
 
   div.card:nth-child(2){
-    position: relative;
-    left: 200px;
-    top: 150px;
+    margin-left: 50px;
   }
 
   div.card:nth-child(3){
-    position: relative;
-    top: 200px;
+    margin-left: 50px;
   }
 
   div.card:nth-child(4){
-    position: relative;
-    left: 200px;
-    top: 200px;
+    margin-left: 50px;
   }
 
   .buscar{

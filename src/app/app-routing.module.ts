@@ -9,14 +9,18 @@ import { MisReservasComponent } from './componentes/mis-reservas/mis-reservas.co
 import { EliminarReservasComponent } from './componentes/eliminar-reservas/eliminar-reservas.component';
 import { EditarReservasComponent } from './componentes/editar-reservas/editar-reservas.component';
 import { FormEditReservasComponent } from './componentes/form-edit-reservas/form-edit-reservas.component';
-import { CarruselComponent } from './componentes/carrusel/carrusel.component';
+import { ReservasComponent } from './componentes/reservas/reservas.component';
+import { MapawebComponent } from './componentes/mapaweb/mapaweb.component';
 
 const routes: Routes = [
   {path: '',component:TitulosComponent, data:{
     titulo:'HOME'
   }},
   {path: 'verRestaurantes',component:CardRestauranteComponent, data:{
-    titulo:'UBICACIONES'
+    titulo:'UBICACIONES',
+  }},
+  {path: 'reservas',component:ReservasComponent, data:{
+    titulo:'RESERVAS'
   }},
   {path: 'altaReservas',component:FormReservaComponent, data: { titulo: 'RESERVAS / RESEVAR' },},
   {path: 'misReservas',component:MisReservasComponent, data:{
@@ -33,6 +37,10 @@ const routes: Routes = [
   { path: 'register', component:RegisterComponent, pathMatch: "full" , data:{
     titulo:'REGISTRO'
   }},
+  { path: 'mapaWeb', component:MapawebComponent, pathMatch: "full" , data:{
+    titulo:'MAPA WEB'
+  }}
+  
 ];
 
 @NgModule({

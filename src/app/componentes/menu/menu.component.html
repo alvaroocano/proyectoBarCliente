@@ -17,7 +17,7 @@
 				<li><a class="navbar-brand" [routerLink]="''"><img src="../../../assets/logo.png" class="logo"></a></li>
 				
 				<li class="nav-item drop" ngbDropdown>
-					<a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button"> <b>∙RESERVAS</b></a>
+					<a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button" [routerLink]="'reservas'"> <b>∙RESERVAS</b></a>
 					<div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end bg-dangerCl position-initial menu-drop">
 						<a ngbDropdownItem [routerLink]="'/altaReservas'" (click)="$event.preventDefault()">RESERVAR</a>
 						<a ngbDropdownItem [routerLink]="'/editarReservas'" (click)="$event.preventDefault()">MODIFICAR RESERVA</a>
