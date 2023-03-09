@@ -30,6 +30,7 @@ import { BreadcrumbService } from 'xng-breadcrumb';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { MapawebComponent } from './componentes/mapaweb/mapaweb.component';
 import { ReservasComponent } from './componentes/reservas/reservas.component';
+import { DeclaracionComponent } from './componentes/declaracion/declaracion.component';
 
 
 
@@ -52,7 +53,8 @@ import { ReservasComponent } from './componentes/reservas/reservas.component';
     CarruselComponent,
     FooterComponent,
     MapawebComponent,
-    ReservasComponent
+    ReservasComponent,
+    DeclaracionComponent
   ],
   imports: [
     BrowserModule,

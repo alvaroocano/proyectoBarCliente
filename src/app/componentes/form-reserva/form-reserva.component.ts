@@ -29,79 +29,10 @@ export class FormReservaComponent{
   total=new FormControl('', [Validators.required, Validators.nullValidator]);
   
   ngOnInit() {
-    this.payPalConfig = {
-      currency: "EUR",
-      clientId: "AYvU7p49APJ3TWCP7EPq6Z1Sm7LijDirPdDI-G6DjNasJ2tyIVCwb0IZL1v5cKy_tw7qPr_2ybS62gCR",
-      createOrder: () =>
-        <ICreateOrderRequest>{
-          intent: "CAPTURE",
-          purchase_units: [
-            {
-              amount: {
-                currency_code: "EUR",
-                value: "9.99",
-                breakdown: {
-                  item_total: {
-                    currency_code: "EUR",
-                    value: "9.99"
-                  }
-                }
-              },
-              items: [
-                {
-                  name: "Enterprise Subscription",
-                  quantity: "1",
-                  category: "DIGITAL_GOODS",
-                  unit_amount: {
-                    currency_code: "EUR",
-                    value: "9.99"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-      advanced: {
-        commit: "true"
-      },
-      style: {
-        label: "paypal",
-        layout: "vertical"
-      },
-      onApprove: (data: any, actions: { order: { get: () => Promise<any>; }; }) => {
-        console.log(
-          "onApprove - transaction was approved, but not authorized",
-          data,
-          actions
-        );
-        actions.order.get().then(details => {
-          console.log(
-            "onApprove - you can get full order details inside onApprove: ",
-            details
-          );
-        });
-      },
-      onClientAuthorization: (data: any) => {
-        console.log(
-          "onClientAuthorization - you should probably inform your server about completed transaction at this point",
-          data
-        );
-      },
-      onCancel: (data: any, actions: any) => {
-        console.log("OnCancel", data, actions);
-      },
-      onError: (err: any) => {
-        console.log("OnError", err);
-      },
-      onClick: (data: any, actions: any) => {
-        console.log("onClick", data, actions);
-      }
-    };
-
     this.cargarRestaurantes();
   }
 
-  async pay() {
+  async validar() {
     let error=false;
     let nro_personas=0;
     if(!this.nro_personas.value?.trim() ||!Number(this.nro_personas.value?.trim())){
@@ -167,33 +98,101 @@ export class FormReservaComponent{
     }else{
       hora=this.hora.value?.trim();
     }
-    const reserva:Reserva={
-      "id":"",
-      "fecha":fecha+" 00:00:00",
-      "primero":primero,
-      "segundo":segundo,
-      "bebida":bebida,
-      "postre":postre,
-      "nro_personas":nro_personas,
-      "hora":hora,
-      "total":12.5,
-      "restaurantes":restaurante,
-      "user":"1"
-    }
 
     if(!error){
-      this.showPaypalButtons = true;
-      const resultado=await this.reservaServicio.setReserva(reserva, "1", restaurante);
-      if(resultado.status!="error"){
-        alert("Operación realizada");
-      }else{
-        alert("No se ha podido realizar la operación");
-        console.log(resultado.status);
-        console.log(restaurante);
+      const reserva:Reserva={
+        "id":"",
+        "fecha":fecha+" 00:00:00",
+        "primero":primero,
+        "segundo":segundo,
+        "bebida":bebida,
+        "postre":postre,
+        "nro_personas":nro_personas,
+        "hora":hora,
+        "total":12.5,
+        "restaurantes":restaurante,
+        "user":"1"
       }
-    }
-    
+      this.showPaypalButtons = true;
+      this.payPalConfig = {
+      currency: "EUR",
+      clientId: "AYvU7p49APJ3TWCP7EPq6Z1Sm7LijDirPdDI-G6DjNasJ2tyIVCwb0IZL1v5cKy_tw7qPr_2ybS62gCR",
+      createOrder: () =>
+        <ICreateOrderRequest>{
+          intent: "CAPTURE",
+          purchase_units: [
+            {
+              amount: {
+                currency_code: "EUR",
+                value: "9.99",
+                breakdown: {
+                  item_total: {
+                    currency_code: "EUR",
+                    value: "9.99"
+                  }
+                }
+              },
+              items: [
+                {
+                  name: "Enterprise Subscription",
+                  quantity: "1",
+                  category: "DIGITAL_GOODS",
+                  unit_amount: {
+                    currency_code: "EUR",
+                    value: "9.99"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+      advanced: {
+        commit: "true"
+      },
+      style: {
+        label: "paypal",
+        layout: "vertical"
+      },
+      onApprove: (data: any, actions: { order: { get: () => Promise<any>; }; }) => {
+
+        console.log(
+          "onApprove - transaction was approved, but not authorized",
+          data,
+          actions
+        );
+        actions.order.get().then(details => {
+          console.log(
+            "onApprove - you can get full order details inside onApprove: ",
+            details
+          );
+        });
+      },
+      onClientAuthorization: async (data: any) => {
+        
+        const resultado=await this.reservaServicio.setReserva(reserva, "1", restaurante);
+        if(resultado.status!="error"){
+          alert("Operación realizada");
+        }else{
+          alert("No se ha podido realizar la operación");
+          console.log(resultado.status);
+          console.log(restaurante);
+        }
+      
+      },
+      onCancel: (data: any, actions: any) => {
+        console.log("OnCancel", data, actions);
+      },
+      onError: (err: any) => {
+        console.log("OnError", err);
+      },
+      onClick: (data: any, actions: any) => {
+        console.log("onClick", data, actions);
+      }
+    };
+      
   }
+  }
+  
 
   back(){
     this.showPaypalButtons = false;

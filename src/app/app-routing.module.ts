@@ -11,6 +11,7 @@ import { EditarReservasComponent } from './componentes/editar-reservas/editar-re
 import { FormEditReservasComponent } from './componentes/form-edit-reservas/form-edit-reservas.component';
 import { ReservasComponent } from './componentes/reservas/reservas.component';
 import { MapawebComponent } from './componentes/mapaweb/mapaweb.component';
+import { DeclaracionComponent } from './componentes/declaracion/declaracion.component';
 
 const routes: Routes = [
   {path: '',component:TitulosComponent, data:{
@@ -39,6 +40,9 @@ const routes: Routes = [
   }},
   { path: 'mapaWeb', component:MapawebComponent, pathMatch: "full" , data:{
     titulo:'MAPA WEB'
+  }},
+  { path: 'declaracion', component:DeclaracionComponent, pathMatch: "full" , data:{
+    titulo:'DECLARACIÓN DE ACCESIBILIDAD'
   }}
   
 ];
