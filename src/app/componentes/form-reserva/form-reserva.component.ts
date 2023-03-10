@@ -75,8 +75,8 @@ export class FormReservaComponent{
       bebida=this.bebida.value?.trim();
     }
 
-    let postre="";
-    if(!this.postre.value?.trim()){
+    let postre=""; 
+    if(!this.postre.value?.trim()){ 
       error=true;
       alert("El postre debe estar relleno");
     }else{
